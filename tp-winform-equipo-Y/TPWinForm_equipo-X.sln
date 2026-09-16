@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPWinForm_equipo-X", "TPWinForm_equipo-X\TPWinForm_equipo-X.csproj", "{EC319109-33D3-48D4-BE2F-58C251DB1464}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{D9B6F66E-956E-4E61-917E-431610303CD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{A163DE90-1939-43D0-95F7-4E02DAD2D85A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC319109-33D3-48D4-BE2F-58C251DB1464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC319109-33D3-48D4-BE2F-58C251DB1464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC319109-33D3-48D4-BE2F-58C251DB1464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC319109-33D3-48D4-BE2F-58C251DB1464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9B6F66E-956E-4E61-917E-431610303CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9B6F66E-956E-4E61-917E-431610303CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9B6F66E-956E-4E61-917E-431610303CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9B6F66E-956E-4E61-917E-431610303CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A163DE90-1939-43D0-95F7-4E02DAD2D85A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A163DE90-1939-43D0-95F7-4E02DAD2D85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A163DE90-1939-43D0-95F7-4E02DAD2D85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A163DE90-1939-43D0-95F7-4E02DAD2D85A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90527833-7898-4F42-A449-C7750A6302F6}
+	EndGlobalSection
+EndGlobal

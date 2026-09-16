@@ -1,0 +1,6 @@
+C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\Dominio\bin\Debug\Dominio.dll
+C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\Dominio\bin\Debug\Dominio.pdb
+C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\Dominio\obj\Debug\Dominio.dll
+C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\Dominio\obj\Debug\Dominio.pdb
