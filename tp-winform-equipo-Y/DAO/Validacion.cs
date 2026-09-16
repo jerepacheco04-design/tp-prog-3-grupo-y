@@ -25,7 +25,7 @@ namespace DAO
                 (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps))
                 throw new ArgumentException("La imagen debe tener una URL http o https válida.");
         }
-
+        //comentario prueba 
         internal static void Precio(decimal valor)
         {
             if (valor < 0 || valor > 922337203685477.5807m || decimal.Round(valor, 4) != valor)
