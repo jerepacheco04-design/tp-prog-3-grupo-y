@@ -24,3 +24,5 @@ C:\Users\alanc\Desktop\facultad\3 Tercer Cuatri\Programacion III\Repositorio\tp-
 C:\Users\alanc\Desktop\facultad\3 Tercer Cuatri\Programacion III\Repositorio\tp-prog-3-grupo-y\tp-winform-equipo-Y\TPWinForm_equipo-X\obj\Debug\TPWinFor.7618CFFA.Up2Date
 C:\Users\alanc\Desktop\facultad\3 Tercer Cuatri\Programacion III\Repositorio\tp-prog-3-grupo-y\tp-winform-equipo-Y\TPWinForm_equipo-X\obj\Debug\TPWinForm_equipo-X.exe
 C:\Users\alanc\Desktop\facultad\3 Tercer Cuatri\Programacion III\Repositorio\tp-prog-3-grupo-y\tp-winform-equipo-Y\TPWinForm_equipo-X\obj\Debug\TPWinForm_equipo-X.pdb
+C:\Users\alanc\Desktop\facultad\3 Tercer Cuatri\Programacion III\Repositorio\tp-prog-3-grupo-y\tp-winform-equipo-Y\TPWinForm_equipo-X\bin\Debug\BusinessLogic.dll
+C:\Users\alanc\Desktop\facultad\3 Tercer Cuatri\Programacion III\Repositorio\tp-prog-3-grupo-y\tp-winform-equipo-Y\TPWinForm_equipo-X\bin\Debug\BusinessLogic.pdb

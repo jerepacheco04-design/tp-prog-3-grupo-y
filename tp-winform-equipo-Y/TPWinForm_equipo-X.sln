@@ -1,12 +1,21 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36408.4 d17.14
+VisualStudioVersion = 17.14.36408.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPWinForm_equipo-X", "TPWinForm_equipo-X\TPWinForm_equipo-X.csproj", "{EC319109-33D3-48D4-BE2F-58C251DB1464}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5211F404-FC26-4591-8C44-F17053B32296} = {5211F404-FC26-4591-8C44-F17053B32296}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{D9B6F66E-956E-4E61-917E-431610303CD6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{A163DE90-1939-43D0-95F7-4E02DAD2D85A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{5211F404-FC26-4591-8C44-F17053B32296}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A163DE90-1939-43D0-95F7-4E02DAD2D85A} = {A163DE90-1939-43D0-95F7-4E02DAD2D85A}
+		{D9B6F66E-956E-4E61-917E-431610303CD6} = {D9B6F66E-956E-4E61-917E-431610303CD6}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +35,10 @@ Global
 		{A163DE90-1939-43D0-95F7-4E02DAD2D85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A163DE90-1939-43D0-95F7-4E02DAD2D85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A163DE90-1939-43D0-95F7-4E02DAD2D85A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5211F404-FC26-4591-8C44-F17053B32296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5211F404-FC26-4591-8C44-F17053B32296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5211F404-FC26-4591-8C44-F17053B32296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5211F404-FC26-4591-8C44-F17053B32296}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
