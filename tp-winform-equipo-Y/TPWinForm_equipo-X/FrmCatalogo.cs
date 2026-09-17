@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAO;
+using BusinessLogic;
 using Dominio;
 
 namespace TPWinForm_equipo_X
@@ -55,7 +55,7 @@ namespace TPWinForm_equipo_X
             string texto = txtBuscar.Text;
             try
             {
-                var lista = await Task.Run(() => new ArticuloDAO().Buscar(new FiltroArticulo { Texto = texto }));
+                var lista = await Task.Run(() => new ArticuloBL().Buscar(new FiltroArticulo { Texto = texto }));
                 if (IsDisposed) return;
                 grilla.DataSource = lista.Select(a => new { a.Codigo, a.Nombre, a.Descripcion,
                     Marca = a.Marca == null ? "(Sin marca)" : a.Marca.Descripcion,
@@ -75,6 +75,18 @@ namespace TPWinForm_equipo_X
                     : ex.Message;
             }
             finally { if (!IsDisposed) btnBuscar.Enabled = true; }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // FrmCatalogo
+            // 
+            this.ClientSize = new System.Drawing.Size(724, 644);
+            this.Name = "FrmCatalogo";
+            this.ResumeLayout(false);
+
         }
     }
 }

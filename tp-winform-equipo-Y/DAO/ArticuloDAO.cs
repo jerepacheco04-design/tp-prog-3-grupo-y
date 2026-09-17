@@ -20,9 +20,7 @@ namespace DAO
             if (datos == null) throw new ArgumentNullException("datos");
             this.datos = datos;
         }
-
-        public List<Articulo> Listar() { return Buscar(new FiltroArticulo()); }
-
+        
         public Articulo ObtenerPorId(int id)
         {
             Validacion.Id(id);
