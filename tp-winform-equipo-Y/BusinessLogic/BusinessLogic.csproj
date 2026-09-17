@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FiltroArticuloBL.cs" />
+    <Compile Include="ValidacionBL.cs" />
     <Compile Include="MarcaBL.cs" />
     <Compile Include="ImagenBL.cs" />
     <Compile Include="CategoriaBL.cs" />

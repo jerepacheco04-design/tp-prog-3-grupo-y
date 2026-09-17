@@ -3,11 +3,11 @@
 // Agregar devuelve el Id generado; Modificar guarda la lista completa de imagenes.
 // Las escrituras usan parametros y una transaccion para evitar guardados parciales.
 
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using Dominio;
 
 namespace DAO
 {
@@ -20,7 +20,7 @@ namespace DAO
             if (datos == null) throw new ArgumentNullException("datos");
             this.datos = datos;
         }
-        
+
         public Articulo ObtenerPorId(int id)
         {
             Validacion.Id(id);
@@ -30,15 +30,8 @@ namespace DAO
 
         public List<Articulo> Buscar(FiltroArticulo filtro)
         {
-            if (filtro == null) throw new ArgumentNullException("filtro");
-            if (filtro.IdMarca.HasValue) Validacion.Id(filtro.IdMarca.Value);
-            if (filtro.IdCategoria.HasValue) Validacion.Id(filtro.IdCategoria.Value);
-            if (filtro.PrecioMinimo.HasValue) Validacion.Precio(filtro.PrecioMinimo.Value);
-            if (filtro.PrecioMaximo.HasValue) Validacion.Precio(filtro.PrecioMaximo.Value);
-            if (filtro.PrecioMinimo > filtro.PrecioMaximo)
-                throw new ArgumentException("El precio mínimo no puede superar al máximo.");
-            if (filtro.Texto != null && filtro.Texto.Length > 150) throw new ArgumentException("La búsqueda admite hasta 150 caracteres.");
-            if (filtro.Codigo != null && filtro.Codigo.Length > 50) throw new ArgumentException("El código admite hasta 50 caracteres.");
+
+
             return Consultar(filtro, null);
         }
 
