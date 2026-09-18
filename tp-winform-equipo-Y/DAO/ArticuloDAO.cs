@@ -30,8 +30,6 @@ namespace DAO
 
         public List<Articulo> Buscar(FiltroArticulo filtro)
         {
-
-
             return Consultar(filtro, null);
         }
 
@@ -43,12 +41,12 @@ namespace DAO
             using (var comando = conexion.CreateCommand())
             {
                 comando.CommandText = @"SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdMarca, A.IdCategoria, A.Precio,
-M.Descripcion AS Marca, C.Descripcion AS Categoria, I.Id AS IdImagen, I.ImagenUrl
-FROM ARTICULOS A
-LEFT JOIN MARCAS M ON M.Id = A.IdMarca
-LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria
-LEFT JOIN IMAGENES I ON I.IdArticulo = A.Id
-WHERE 1 = 1";
+                                        M.Descripcion AS Marca, C.Descripcion AS Categoria, I.Id AS IdImagen, I.ImagenUrl
+                                        FROM ARTICULOS A
+                                        LEFT JOIN MARCAS M ON M.Id = A.IdMarca
+                                        LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria
+                                        LEFT JOIN IMAGENES I ON I.IdArticulo = A.Id
+                                        WHERE 1 = 1";
                 if (id.HasValue) AgregarFiltro(comando, " AND A.Id = @Id", "@Id", SqlDbType.Int, id.Value);
                 if (!string.IsNullOrWhiteSpace(filtro.Texto))
                 {

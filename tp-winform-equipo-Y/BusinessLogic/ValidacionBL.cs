@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BusinessLogic
 {
-    public class ValidacionBL
+    internal class ValidacionBL
     {
         internal static void Id(int id)
         {

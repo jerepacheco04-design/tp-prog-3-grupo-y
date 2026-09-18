@@ -33,8 +33,8 @@ namespace BusinessLogic
                 throw new ArgumentException("El precio mínimo no puede superar al máximo.");
             }
 
-            if (filtro.IdMarca.HasValue) Validacion.Id(filtro.IdMarca.Value);
-            if (filtro.IdCategoria.HasValue) Validacion.Id(filtro.IdCategoria.Value);
+            if (filtro.IdMarca.HasValue) ValidacionBL.Id(filtro.IdMarca.Value);
+            if (filtro.IdCategoria.HasValue) ValidacionBL.Id(filtro.IdCategoria.Value);
             if (filtro.PrecioMinimo.HasValue) Validacion.Precio(filtro.PrecioMinimo.Value);
             if (filtro.PrecioMaximo.HasValue) Validacion.Precio(filtro.PrecioMaximo.Value);
 
