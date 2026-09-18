@@ -7,3 +7,12 @@ C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\DAO\obj\Debug
 C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\DAO\obj\Debug\DAO.csproj.Up2Date
 C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\DAO\obj\Debug\DAO.dll
 C:\Users\jere_\OneDrive\Escritorio\repo github\tp-winform-equipo-x\DAO\obj\Debug\DAO.pdb
+C:\Users\jere_\OneDrive\Escritorio\tp prog 3 1\tp-prog-3-grupo-y\tp-winform-equipo-Y\DAO\bin\Debug\DAO.dll
+C:\Users\jere_\OneDrive\Escritorio\tp prog 3 1\tp-prog-3-grupo-y\tp-winform-equipo-Y\DAO\bin\Debug\DAO.pdb
+C:\Users\jere_\OneDrive\Escritorio\tp prog 3 1\tp-prog-3-grupo-y\tp-winform-equipo-Y\DAO\bin\Debug\Dominio.dll
+C:\Users\jere_\OneDrive\Escritorio\tp prog 3 1\tp-prog-3-grupo-y\tp-winform-equipo-Y\DAO\bin\Debug\Dominio.pdb
+C:\Users\jere_\OneDrive\Escritorio\tp prog 3 1\tp-prog-3-grupo-y\tp-winform-equipo-Y\DAO\obj\Debug\DAO.csproj.AssemblyReference.cache
+C:\Users\jere_\OneDrive\Escritorio\tp prog 3 1\tp-prog-3-grupo-y\tp-winform-equipo-Y\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+C:\Users\jere_\OneDrive\Escritorio\tp prog 3 1\tp-prog-3-grupo-y\tp-winform-equipo-Y\DAO\obj\Debug\DAO.csproj.Up2Date
+C:\Users\jere_\OneDrive\Escritorio\tp prog 3 1\tp-prog-3-grupo-y\tp-winform-equipo-Y\DAO\obj\Debug\DAO.dll
+C:\Users\jere_\OneDrive\Escritorio\tp prog 3 1\tp-prog-3-grupo-y\tp-winform-equipo-Y\DAO\obj\Debug\DAO.pdb
