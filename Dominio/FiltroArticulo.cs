@@ -1,6 +1,6 @@
-namespace Dominio
+﻿namespace Dominio
 {
-    // Los criterios sin valor no restringen la búsqueda. Los demás se combinan con AND.
+   
     public class FiltroArticulo
     {
         public string Texto { get; set; }

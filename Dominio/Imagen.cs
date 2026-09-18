@@ -1,10 +1,14 @@
-namespace Dominio
+﻿namespace Dominio
 {
     public class Imagen
     {
         public int Id { get; set; }
         public int IdArticulo { get; set; }
         public string ImagenUrl { get; set; }
-        public override string ToString() { return ImagenUrl; }
+
+        public override string ToString()
+        {
+            return ImagenUrl;
+        }
     }
 }

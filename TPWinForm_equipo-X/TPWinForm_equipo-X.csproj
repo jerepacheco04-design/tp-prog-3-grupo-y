@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -28,16 +28,39 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" /><Reference Include="System.Web" /><Reference Include="PresentationCore" /><Reference Include="WindowsBase" /><Reference Include="System.Xaml" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Windows.Forms" />
+    <Compile Include="FrmCatalogo.Designer.cs">
+      <DependentUpon>FrmCatalogo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCatalogo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="FrmArticulo.cs"><SubType>Form</SubType></Compile>
-    <Compile Include="FrmClasificacion.cs"><SubType>Form</SubType></Compile>
-    <Compile Include="FrmDetalle.cs"><SubType>Form</SubType></Compile>
-    <Compile Include="ArchivosImagen.cs" /><Compile Include="ImagenRemota.cs" />
+    <Compile Include="FrmArticulo.Designer.cs">
+      <DependentUpon>FrmArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClasificacion.Designer.cs">
+      <DependentUpon>FrmClasificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClasificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetalle.Designer.cs">
+      <DependentUpon>FrmDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArchivosImagen.cs" />
+    <Compile Include="ImagenRemota.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
       <Project>{5211f404-fc26-4591-8c44-f17053b32296}</Project>
@@ -50,11 +73,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="..\DatosIniciales\Catalogo.bak">
+      <Link>DatosIniciales\Catalogo.bak</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\Imagenes\**\*">
       <Link>Imagenes\%(RecursiveDir)%(Filename)%(Extension)</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmArticulo.resx">
+      <DependentUpon>FrmArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCatalogo.resx">
+      <DependentUpon>FrmCatalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClasificacion.resx">
+      <DependentUpon>FrmClasificacion.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
-

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,10 +9,14 @@ namespace DAO
     public class ImagenDAO
     {
         private readonly AccesoDatos datos;
-        public ImagenDAO() : this(new AccesoDatos()) { }
+        public ImagenDAO() : this(new AccesoDatos())
+        {
+        }
+
         public ImagenDAO(AccesoDatos datos)
         {
-            if (datos == null) throw new ArgumentNullException("datos");
+            if (datos == null)
+                throw new ArgumentNullException("datos");
             this.datos = datos;
         }
 
@@ -28,13 +32,16 @@ namespace DAO
                     while (lector.Read())
                         lista.Add(new Imagen { Id = (int)lector["Id"], IdArticulo = (int)lector["IdArticulo"], ImagenUrl = (string)lector["ImagenUrl"] });
             }
+
             return lista;
         }
 
         public int Agregar(Imagen imagen)
         {
-            if (imagen == null) throw new ArgumentNullException("imagen");
-            if (imagen.Id != 0) throw new ArgumentException("Una imagen nueva debe tener Id cero.");
+            if (imagen == null)
+                throw new ArgumentNullException("imagen");
+            if (imagen.Id != 0)
+                throw new ArgumentException("Una imagen nueva debe tener Id cero.");
             Validacion.Id(imagen.IdArticulo);
             Validacion.Url(imagen.ImagenUrl);
             using (var conexion = datos.AbrirConexion())
@@ -51,7 +58,8 @@ namespace DAO
 
         public void Modificar(Imagen imagen)
         {
-            if (imagen == null) throw new ArgumentNullException("imagen");
+            if (imagen == null)
+                throw new ArgumentNullException("imagen");
             Validacion.Id(imagen.Id);
             Validacion.Id(imagen.IdArticulo);
             Validacion.Url(imagen.ImagenUrl);
@@ -65,8 +73,10 @@ namespace DAO
                     comando.Parameters.Add("@Id", SqlDbType.Int).Value = imagen.Id;
                     comando.Parameters.Add("@Articulo", SqlDbType.Int).Value = imagen.IdArticulo;
                     AccesoDatos.AgregarTexto(comando, "@Url", imagen.ImagenUrl.Trim(), 1000);
-                    if (comando.ExecuteNonQuery() != 1) throw new InvalidOperationException("La imagen no existe o pertenece a otro artículo.");
+                    if (comando.ExecuteNonQuery() != 1)
+                        throw new InvalidOperationException("La imagen no existe o pertenece a otro artículo.");
                 }
+
                 transaccion.Commit();
             }
         }
@@ -82,19 +92,24 @@ namespace DAO
                 {
                     comando.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                     object valor = comando.ExecuteScalar();
-                    if (valor == null) throw new InvalidOperationException("La imagen ya no existe.");
+                    if (valor == null)
+                        throw new InvalidOperationException("La imagen ya no existe.");
                     idArticulo = (int)valor;
                 }
+
                 using (var comando = new SqlCommand("SELECT COUNT(*) FROM IMAGENES WHERE IdArticulo=@Articulo", conexion, transaccion))
                 {
                     comando.Parameters.Add("@Articulo", SqlDbType.Int).Value = idArticulo;
-                    if ((int)comando.ExecuteScalar() <= 1) throw new InvalidOperationException("El artículo debe conservar al menos una imagen.");
+                    if ((int)comando.ExecuteScalar() <= 1)
+                        throw new InvalidOperationException("El artículo debe conservar al menos una imagen.");
                 }
+
                 using (var comando = new SqlCommand("DELETE FROM IMAGENES WHERE Id=@Id", conexion, transaccion))
                 {
                     comando.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                     comando.ExecuteNonQuery();
                 }
+
                 transaccion.Commit();
             }
         }
@@ -106,7 +121,8 @@ namespace DAO
                 comando.Parameters.Add("@Articulo", SqlDbType.Int).Value = imagen.IdArticulo;
                 comando.Parameters.Add("@Id", SqlDbType.Int).Value = imagen.Id;
                 AccesoDatos.AgregarTexto(comando, "@Url", imagen.ImagenUrl.Trim(), 1000);
-                if ((int)comando.ExecuteScalar() > 0) throw new ArgumentException("Esa imagen ya está asociada al artículo.");
+                if ((int)comando.ExecuteScalar() > 0)
+                    throw new ArgumentException("Esa imagen ya está asociada al artículo.");
             }
         }
 
@@ -120,7 +136,7 @@ namespace DAO
             }
         }
 
-        // Uso interno: participa en la misma transacción que guarda el artículo.
+        
         internal static List<Imagen> Reemplazar(SqlConnection conexion, SqlTransaction transaccion, int idArticulo, List<Imagen> imagenes)
         {
             using (var comando = new SqlCommand("DELETE FROM IMAGENES WHERE IdArticulo=@Articulo", conexion, transaccion))
@@ -128,6 +144,7 @@ namespace DAO
                 comando.Parameters.Add("@Articulo", SqlDbType.Int).Value = idArticulo;
                 comando.ExecuteNonQuery();
             }
+
             var resultado = new List<Imagen>();
             foreach (var imagen in imagenes)
             {
@@ -135,6 +152,7 @@ namespace DAO
                 int id = Insertar(conexion, transaccion, idArticulo, url);
                 resultado.Add(new Imagen { Id = id, IdArticulo = idArticulo, ImagenUrl = url });
             }
+
             return resultado;
         }
     }
