@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
+    <ProjectGuid>{EC319109-33D3-48D4-BE2F-58C251DB1464}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TPWinForm_equipo_X</RootNamespace>
+    <AssemblyName>TPWinForm_equipo-X</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" /><Reference Include="System.Web" /><Reference Include="PresentationCore" /><Reference Include="WindowsBase" /><Reference Include="System.Xaml" />
+    <Reference Include="System.Windows.Forms" />
+    <Compile Include="FrmCatalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="FrmArticulo.cs"><SubType>Form</SubType></Compile>
+    <Compile Include="FrmClasificacion.cs"><SubType>Form</SubType></Compile>
+    <Compile Include="FrmDetalle.cs"><SubType>Form</SubType></Compile>
+    <Compile Include="ArchivosImagen.cs" /><Compile Include="ImagenRemota.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{5211f404-fc26-4591-8c44-f17053b32296}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{D9B6F66E-956E-4E61-917E-431610303CD6}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <Content Include="..\Imagenes\**\*">
+      <Link>Imagenes\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
+
