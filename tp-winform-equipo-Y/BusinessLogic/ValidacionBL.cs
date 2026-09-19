@@ -1,6 +1,4 @@
-using Dominio;
 using System;
-using System.Linq;
 
 
 namespace BusinessLogic
@@ -12,6 +10,7 @@ namespace BusinessLogic
             if (id <= 0) throw new ArgumentException("El identificador debe ser mayor que cero.");
         }
 
+        // Helper de validacion de texto generico.
         internal static void Texto(string valor, string campo, int maximo)
         {
             if (string.IsNullOrWhiteSpace(valor) || valor.Trim().Length > maximo)
@@ -33,24 +32,6 @@ namespace BusinessLogic
                 throw new ArgumentException("El precio debe ser no negativo, tener hasta cuatro decimales y estar dentro del rango SQL money.");
         }
 
-        internal static void Articulo(Articulo articulo)
-        {
-            if (articulo == null) throw new ArgumentNullException("articulo");
-            Texto(articulo.Codigo, "El código", 50);
-            Texto(articulo.Nombre, "El nombre", 50);
-            Texto(articulo.Descripcion, "La descripción", 150);
-            if (articulo.Marca == null || articulo.Marca.Id <= 0) throw new ArgumentException("Seleccioná una marca.");
-            if (articulo.Categoria == null || articulo.Categoria.Id <= 0) throw new ArgumentException("Seleccioná una categoría.");
-            Precio(articulo.Precio);
-            if (articulo.Imagenes == null || articulo.Imagenes.Count == 0)
-                throw new ArgumentException("El artículo debe tener al menos una imagen.");
-            foreach (var imagen in articulo.Imagenes)
-            {
-                if (imagen == null) throw new ArgumentException("La lista contiene una imagen vacía.");
-                Url(imagen.ImagenUrl);
-            }
-            if (articulo.Imagenes.Select(i => i.ImagenUrl.Trim()).Distinct(StringComparer.Ordinal).Count() != articulo.Imagenes.Count)
-                throw new ArgumentException("No se puede repetir una URL en el mismo artículo.");
-        }
+
     }
 }
