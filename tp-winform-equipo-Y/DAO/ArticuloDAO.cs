@@ -23,9 +23,20 @@ namespace DAO
 
         public Articulo ObtenerPorId(int id)
         {
-            Validacion.Id(id);
+            // TODO:
+            // esta bien cargar una lista y retornar solo el primero? deberia validar id unico para que esto no pase
+            // pero tambien deberia ser tolerante si es que la DB ya hay datos asi. Retornar y al mismo tiempo avisar con
+            // algun exception?
             var articulos = Consultar(new FiltroArticulo(), id);
-            return articulos.Count == 0 ? null : articulos[0];
+
+            if (articulos.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return articulos[0];
+            }
         }
 
         public List<Articulo> Buscar(FiltroArticulo filtro)
@@ -33,6 +44,8 @@ namespace DAO
             return Consultar(filtro, null);
         }
 
+        // TODO:
+        // Hay que separar este método en doso mas? Vale la pena tener todo junto? Filtro de lista, obtener por id, todo apunta aca.
         private List<Articulo> Consultar(FiltroArticulo filtro, int? id)
         {
             var resultado = new List<Articulo>();

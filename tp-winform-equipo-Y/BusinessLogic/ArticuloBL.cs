@@ -47,6 +47,14 @@ namespace BusinessLogic
             return dao.Buscar(filtro);
         }
 
+        public Articulo ObtenerPorId(string id)
+        {
+            ArticuloDAO dao = new ArticuloDAO();
+            int parsedId = int.Parse(id);
+            ValidacionBL.Id(parsedId);
+            return dao.ObtenerPorId(parsedId);
+        }
+
         internal static void ValidarArticulo(Articulo articulo)
         {
             if (articulo == null) throw new ArgumentNullException("articulo");

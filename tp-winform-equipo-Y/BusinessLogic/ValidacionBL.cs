@@ -5,6 +5,7 @@ namespace BusinessLogic
 {
     internal class ValidacionBL
     {
+        // Helper de validacion de id generico. (por el momento solo valida int > 0)
         internal static void Id(int id)
         {
             if (id <= 0) throw new ArgumentException("El identificador debe ser mayor que cero.");
