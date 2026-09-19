@@ -8,6 +8,9 @@ namespace DAO
     // Código común a marcas y categorías. Los nombres SQL se eligen internamente.
     internal class ClasificacionDAO
     {
+        // TODO:
+        // revisar si esto esta bien asi como esta hecho. 
+
         private readonly AccesoDatos datos;
         private readonly string tabla;
         private readonly string campo;
