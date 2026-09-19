@@ -18,6 +18,7 @@ namespace BusinessLogic
                 throw new ArgumentException(campo + " es obligatorio y admite hasta " + maximo + " caracteres.");
         }
 
+        // Helper de validacion de URL generico. ¿esta bien que seteemos el valor max en 1000? si hay mas tablas con otro lenght no seria generico esto. 
         internal static void Url(string valor)
         {
             Texto(valor, "La URL de la imagen", 1000);
