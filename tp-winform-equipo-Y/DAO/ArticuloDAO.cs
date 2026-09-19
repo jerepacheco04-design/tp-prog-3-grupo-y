@@ -115,8 +115,6 @@ namespace DAO
 
         public int Agregar(Articulo articulo)
         {
-
-            if (articulo.Id != 0) throw new ArgumentException("Un artículo nuevo debe tener Id igual a cero.");
             return Guardar(articulo, true);
         }
 
