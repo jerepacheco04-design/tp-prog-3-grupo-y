@@ -14,7 +14,9 @@ namespace DAO
     public class ArticuloDAO
     {
         private readonly AccesoDatos datos;
+
         public ArticuloDAO() : this(new AccesoDatos()) { }
+
         public ArticuloDAO(AccesoDatos datos)
         {
             if (datos == null) throw new ArgumentNullException("datos");
@@ -113,15 +115,13 @@ namespace DAO
 
         public int Agregar(Articulo articulo)
         {
-            Validacion.Articulo(articulo);
+
             if (articulo.Id != 0) throw new ArgumentException("Un artículo nuevo debe tener Id igual a cero.");
             return Guardar(articulo, true);
         }
 
         public void Modificar(Articulo articulo)
         {
-            Validacion.Articulo(articulo);
-            Validacion.Id(articulo.Id);
             Guardar(articulo, false);
         }
 
@@ -167,7 +167,6 @@ IdMarca=@Marca, IdCategoria=@Categoria, Precio=@Precio WHERE Id=@Id";
 
         public void Eliminar(int id)
         {
-            Validacion.Id(id);
             using (var conexion = datos.AbrirConexion())
             using (var transaccion = conexion.BeginTransaction(IsolationLevel.Serializable))
             {

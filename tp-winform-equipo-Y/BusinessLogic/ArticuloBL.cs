@@ -55,6 +55,30 @@ namespace BusinessLogic
             return dao.ObtenerPorId(parsedId);
         }
 
+        // TODO:
+        // Porque retornamos un int?
+        public int Agregar(Articulo articulo)
+        {
+            ValidarArticulo(articulo);
+            ArticuloDAO dao = new ArticuloDAO();
+            return dao.Agregar(articulo);
+        }
+
+        public void Modificar(Articulo articulo)
+        {
+            ValidarArticulo(articulo);
+            ValidacionBL.Id(articulo.Id);
+            ArticuloDAO dao = new ArticuloDAO();
+            dao.Modificar(articulo);
+        }
+
+        public void Eliminar(int id)
+        {
+            ValidacionBL.Id(id);
+            ArticuloDAO dao = new ArticuloDAO();
+            dao.Eliminar(id);
+        }
+
         internal static void ValidarArticulo(Articulo articulo)
         {
             if (articulo == null) throw new ArgumentNullException("articulo");
