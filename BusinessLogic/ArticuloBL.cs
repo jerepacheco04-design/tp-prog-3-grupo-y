@@ -25,11 +25,6 @@ namespace BusinessLogic
             dao = new ArticuloDAO(datos);
         }
 
-        public void GuardarRespaldo(string destino)
-        {
-            new AccesoDatos().GuardarRespaldo(destino);
-        }
-
         public List<Articulo> Buscar(FiltroArticulo filtro)
         {
             if (filtro == null)
