@@ -1,8 +1,8 @@
+using DAO;
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAO;
-using Dominio;
 
 namespace BusinessLogic
 {
@@ -60,8 +60,7 @@ namespace BusinessLogic
         public int Agregar(Articulo articulo)
         {
             ValidarArticulo(articulo);
-            if (articulo.Id != 0)
-                throw new ArgumentException("Un artículo nuevo debe tener Id igual a cero.");
+            if (articulo.Id != 0) throw new ArgumentException("Un artículo nuevo debe tener Id igual a cero.");
 
             return dao.Agregar(articulo);
         }

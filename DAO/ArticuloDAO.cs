@@ -28,7 +28,6 @@ namespace DAO
 
         public Articulo ObtenerPorId(int id)
         {
-            Validacion.Id(id);
             var articulos = Consultar(new FiltroArticulo(), id);
             return articulos.Count == 0 ? null : articulos[0];
         }
@@ -122,16 +121,12 @@ WHERE 1 = 1";
 
         public int Agregar(Articulo articulo)
         {
-            Validacion.Articulo(articulo);
-            if (articulo.Id != 0)
-                throw new ArgumentException("Un artículo nuevo debe tener Id igual a cero.");
+
             return Guardar(articulo, true);
         }
 
         public void Modificar(Articulo articulo)
         {
-            Validacion.Articulo(articulo);
-            Validacion.Id(articulo.Id);
             Guardar(articulo, false);
         }
 
@@ -180,7 +175,6 @@ IdMarca=@Marca, IdCategoria=@Categoria, Precio=@Precio WHERE Id=@Id";
 
         public void Eliminar(int id)
         {
-            Validacion.Id(id);
             using (var conexion = datos.AbrirConexion())
             using (var transaccion = conexion.BeginTransaction(IsolationLevel.Serializable))
             {
