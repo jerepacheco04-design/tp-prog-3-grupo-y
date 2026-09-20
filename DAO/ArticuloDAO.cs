@@ -1,9 +1,9 @@
 ﻿
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using Dominio;
 
 namespace DAO
 {
@@ -34,7 +34,10 @@ namespace DAO
         }
 
         public List<Articulo> Buscar(FiltroArticulo filtro)
-        {/
+        {
+            return Consultar(filtro, null);
+        }
+
         private List<Articulo> Consultar(FiltroArticulo filtro, int? id)
         {
             var resultado = new List<Articulo>();
@@ -54,7 +57,7 @@ WHERE 1 = 1";
                 if (!string.IsNullOrWhiteSpace(filtro.Texto))
                 {
                     comando.CommandText += " AND (A.Codigo LIKE @Texto ESCAPE '~' OR A.Nombre LIKE @Texto ESCAPE '~' OR A.Descripcion LIKE @Texto ESCAPE '~' OR M.Descripcion LIKE @Texto ESCAPE '~' OR C.Descripcion LIKE @Texto ESCAPE '~')";
-                    
+
                     string texto = filtro.Texto.Trim().Replace("~", "~~").Replace("%", "~%").Replace("_", "~_").Replace("[", "~[");
                     AccesoDatos.AgregarTexto(comando, "@Texto", "%" + texto + "%", 302);
                 }
@@ -134,7 +137,7 @@ WHERE 1 = 1";
 
         private int Guardar(Articulo articulo, bool nuevo)
         {
-            
+
             using (var conexion = datos.AbrirConexion())
             using (var transaccion = conexion.BeginTransaction(IsolationLevel.Serializable))
             {

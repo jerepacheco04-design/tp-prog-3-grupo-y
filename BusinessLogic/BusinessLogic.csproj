@@ -45,6 +45,8 @@
     <Compile Include="MarcaBL.cs" />
     <Compile Include="CategoriaBL.cs" />
     <Compile Include="ArticuloBL.cs" />
+    <Compile Include="ImagenBL.cs" />
+    <Compile Include="ValidacionBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
