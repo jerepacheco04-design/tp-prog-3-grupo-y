@@ -20,11 +20,6 @@ namespace BusinessLogic
             dao = new ArticuloDAO();
         }
 
-        public ArticuloBL(AccesoDatos datos)
-        {
-            dao = new ArticuloDAO(datos);
-        }
-
         public List<Articulo> Buscar(FiltroArticulo filtro)
         {
             if (filtro == null)

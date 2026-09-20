@@ -16,11 +16,6 @@ namespace BusinessLogic
             dao = new MarcaDAO();
         }
 
-        public MarcaBL(AccesoDatos datos)
-        {
-            dao = new MarcaDAO(datos);
-        }
-
         public List<Marca> Listar()
         {
             return dao.Listar();

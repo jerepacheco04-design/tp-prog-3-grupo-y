@@ -5,6 +5,9 @@ using Dominio;
 
 namespace BusinessLogic
 {
+    // Sin uso actual: la UI no gestiona imagenes una por una, siempre guarda el Articulo completo
+    // (ArticuloBL.Agregar/Modificar -> ArticuloDAO.Guardar -> ImagenDAO.Reemplazar reescribe toda la lista).
+    // Se deja esta clase por si en el futuro se necesita administrar una imagen de forma individual.
     public class ImagenBL
     {
         private readonly ImagenDAO dao;
@@ -12,11 +15,6 @@ namespace BusinessLogic
         public ImagenBL()
         {
             dao = new ImagenDAO();
-        }
-
-        public ImagenBL(AccesoDatos datos)
-        {
-            dao = new ImagenDAO(datos);
         }
 
         public List<Imagen> ListarPorArticulo(int idArticulo)

@@ -16,11 +16,6 @@ namespace BusinessLogic
             dao = new CategoriaDAO();
         }
 
-        public CategoriaBL(AccesoDatos datos)
-        {
-            dao = new CategoriaDAO(datos);
-        }
-
         public List<Categoria> Listar()
         {
             return dao.Listar();

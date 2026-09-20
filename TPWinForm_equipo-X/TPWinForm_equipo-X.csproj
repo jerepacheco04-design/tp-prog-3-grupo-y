@@ -88,6 +88,9 @@
     <EmbeddedResource Include="FrmClasificacion.resx">
       <DependentUpon>FrmClasificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetalle.resx">
+      <DependentUpon>FrmDetalle.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
