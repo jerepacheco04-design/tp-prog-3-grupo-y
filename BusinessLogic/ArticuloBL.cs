@@ -8,6 +8,7 @@ namespace BusinessLogic
 {
     public class ArticuloBL
     {
+        // Constantes para la validación de longitudes máximas, para evitar repetir el hardcodeo de valores y facilitar cambios futuros.
         private const int CodigoMaxLength = 50;
         private const int NombreMaxLength = 50;
         private const int DescripcionMaxLength = 150;

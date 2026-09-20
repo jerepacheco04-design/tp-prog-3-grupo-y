@@ -5,17 +5,20 @@ namespace BusinessLogic
 {
     internal static class ValidacionBL
     {
+        // Helper de validacion de id generico. (por el momento solo valida int > 0)
         internal static void Id(int id)
         {
             if (id <= 0) throw new ArgumentException("El identificador debe ser mayor que cero.");
         }
 
+        // Helper de validacion de texto generico.
         internal static void Texto(string valor, string campo, int maximo)
         {
             if (string.IsNullOrWhiteSpace(valor) || valor.Trim().Length > maximo)
                 throw new ArgumentException(campo + " es obligatorio y admite hasta " + maximo + " caracteres.");
         }
 
+        // Helper de validacion de URL generico. ¿esta bien que seteemos el valor max en 1000? si hay mas tablas con otro lenght no seria generico esto.
         internal static void Url(string valor)
         {
             Texto(valor, "La imagen", 1000);

@@ -1,45 +1,100 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data;
+using System.Data.SqlClient;
 using Dominio;
 
 namespace DAO
 {
     public class CategoriaDAO
     {
-        private readonly ClasificacionDAO dao;
+        private readonly AccesoDatos datos;
+
         public CategoriaDAO() : this(new AccesoDatos())
         {
         }
 
         public CategoriaDAO(AccesoDatos datos)
         {
-            dao = new ClasificacionDAO(datos, false);
+            if (datos == null)
+                throw new ArgumentNullException("datos");
+            this.datos = datos;
         }
 
         public List<Categoria> Listar()
         {
-            return dao.Listar().Select(x => new Categoria { Id = x.Key, Descripcion = x.Value }).ToList();
+            var lista = new List<Categoria>();
+            using (var cn = datos.AbrirConexion())
+            using (var cmd = new SqlCommand("SELECT Id, Descripcion FROM CATEGORIAS ORDER BY Descripcion, Id", cn))
+            using (var dr = cmd.ExecuteReader())
+                while (dr.Read())
+                    lista.Add(new Categoria { Id = (int)dr["Id"], Descripcion = Convert.ToString(dr["Descripcion"]) });
+            return lista;
         }
 
         public int Agregar(Categoria categoria)
         {
-            if (categoria == null)
-                throw new ArgumentNullException("categoria");
-            categoria.Id = dao.Guardar(categoria.Id, categoria.Descripcion, true);
+            categoria.Id = Guardar(categoria.Id, categoria.Descripcion, true);
             return categoria.Id;
         }
 
         public void Modificar(Categoria categoria)
         {
-            if (categoria == null)
-                throw new ArgumentNullException("categoria");
-            dao.Guardar(categoria.Id, categoria.Descripcion, false);
+            Guardar(categoria.Id, categoria.Descripcion, false);
+        }
+
+        private int Guardar(int id, string descripcion, bool nuevo)
+        {
+            using (var cn = datos.AbrirConexion())
+            using (var tx = cn.BeginTransaction(IsolationLevel.Serializable))
+            {
+                using (var cmd = new SqlCommand("SELECT COUNT(*) FROM CATEGORIAS WITH (UPDLOCK,HOLDLOCK) WHERE Descripcion=@Descripcion AND Id<>@Id", cn, tx))
+                {
+                    AccesoDatos.AgregarTexto(cmd, "@Descripcion", descripcion.Trim(), 50);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    if ((int)cmd.ExecuteScalar() > 0)
+                        throw new ArgumentException("Ya existe esa categoría.");
+                }
+
+                string sql = nuevo
+                    ? "INSERT INTO CATEGORIAS (Descripcion) VALUES (@Descripcion); SELECT CAST(SCOPE_IDENTITY() AS int);"
+                    : "UPDATE CATEGORIAS SET Descripcion=@Descripcion WHERE Id=@Id";
+                using (var cmd = new SqlCommand(sql, cn, tx))
+                {
+                    AccesoDatos.AgregarTexto(cmd, "@Descripcion", descripcion.Trim(), 50);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    if (nuevo)
+                        id = (int)cmd.ExecuteScalar();
+                    else if (cmd.ExecuteNonQuery() != 1)
+                        throw new InvalidOperationException("El registro ya no existe.");
+                }
+
+                tx.Commit();
+                return id;
+            }
         }
 
         public void Eliminar(int id)
         {
-            dao.Eliminar(id);
+            using (var cn = datos.AbrirConexion())
+            using (var tx = cn.BeginTransaction(IsolationLevel.Serializable))
+            {
+                AccesoDatos.VerificarExistencia(cn, tx, "CATEGORIAS", id);
+                using (var cmd = new SqlCommand("SELECT COUNT(*) FROM ARTICULOS WITH (UPDLOCK,HOLDLOCK) WHERE IdCategoria=@Id", cn, tx))
+                {
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    if ((int)cmd.ExecuteScalar() > 0)
+                        throw new InvalidOperationException("Hay artículos que utilizan este registro. No se puede eliminar.");
+                }
+
+                using (var cmd = new SqlCommand("DELETE FROM CATEGORIAS WHERE Id=@Id", cn, tx))
+                {
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    cmd.ExecuteNonQuery();
+                }
+
+                tx.Commit();
+            }
         }
     }
 }

@@ -20,10 +20,8 @@
     <Compile Include="BaseInicial.cs" />
     <Compile Include="ArticuloDAO.cs" />
     <Compile Include="CategoriaDAO.cs" />
-    <Compile Include="ClasificacionDAO.cs" />
     <Compile Include="ImagenDAO.cs" />
     <Compile Include="MarcaDAO.cs" />
-    <Compile Include="Validacion.cs" />
     <ProjectReference Include="..\Dominio\Dominio.csproj"><Project>{D9B6F66E-956E-4E61-917E-431610303CD6}</Project><Name>Dominio</Name></ProjectReference>
   </ItemGroup>
 
