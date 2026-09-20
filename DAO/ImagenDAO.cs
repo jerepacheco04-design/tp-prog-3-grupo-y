@@ -22,7 +22,6 @@ namespace DAO
 
         public List<Imagen> ListarPorArticulo(int idArticulo)
         {
-            Validacion.Id(idArticulo);
             var lista = new List<Imagen>();
             using (var conexion = datos.AbrirConexion())
             using (var comando = new SqlCommand("SELECT Id, IdArticulo, ImagenUrl FROM IMAGENES WHERE IdArticulo=@Id ORDER BY Id", conexion))
@@ -38,12 +37,6 @@ namespace DAO
 
         public int Agregar(Imagen imagen)
         {
-            if (imagen == null)
-                throw new ArgumentNullException("imagen");
-            if (imagen.Id != 0)
-                throw new ArgumentException("Una imagen nueva debe tener Id cero.");
-            Validacion.Id(imagen.IdArticulo);
-            Validacion.Url(imagen.ImagenUrl);
             using (var conexion = datos.AbrirConexion())
             using (var transaccion = conexion.BeginTransaction(IsolationLevel.Serializable))
             {
@@ -58,11 +51,6 @@ namespace DAO
 
         public void Modificar(Imagen imagen)
         {
-            if (imagen == null)
-                throw new ArgumentNullException("imagen");
-            Validacion.Id(imagen.Id);
-            Validacion.Id(imagen.IdArticulo);
-            Validacion.Url(imagen.ImagenUrl);
             using (var conexion = datos.AbrirConexion())
             using (var transaccion = conexion.BeginTransaction(IsolationLevel.Serializable))
             {
@@ -83,7 +71,6 @@ namespace DAO
 
         public void Eliminar(int id)
         {
-            Validacion.Id(id);
             using (var conexion = datos.AbrirConexion())
             using (var transaccion = conexion.BeginTransaction(IsolationLevel.Serializable))
             {
